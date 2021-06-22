@@ -5,6 +5,7 @@
 # Setup Python ----------------------------------------------- #
 import pygame, sys, os # import pygame, sys and os
 import Assets.entities as e
+from random import randrange
 # Setup pygame ----------------------------------------------- #
 clock = pygame.time.Clock() # setup the clock
 
@@ -265,4 +266,4 @@ while True: # game loop
     moving_sprites.update(0.2) # update sprites animation
     pygame.display.update() # update display
     clock.tick(FPS) # maintain 60 fps
-
+    

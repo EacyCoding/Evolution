@@ -98,7 +98,7 @@ class Player(object):
             win.blit(self.run[self.runCount//6], (self.x,self.y))
             self.runCount += 1
             self.hitbox = (self.x+ 4, self.y, self.width-24, self.height-13)
-        pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
       
 
 class Enemy(object):
@@ -114,7 +114,7 @@ class Enemy(object):
 
     def draw(self, win):
         self.hitbox = (self.x + 12, self.y + 5, self.width - 24, self.height - 5)
-        pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
         if self.rotateCount >= 79:
             self.rotateCount = 0
         win.blit(pygame.transform.scale(self.rotate[self.rotateCount//8], (64,64)), (self.x,self.y))
@@ -152,7 +152,7 @@ class Coin(object):
 
     def draw(self, win):
         self.hitbox = (self.x + 12, self.y + 5, self.width - 24, self.height - 5)
-        pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
 # Functions -------------------------------------------------- #
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
