@@ -15,120 +15,6 @@ import os
 '''
 '''
 
-
-
-# Initialization --------------------------------------------- #
-pygame.init()
-from pygame.locals import *
-
-clock = pygame.time.Clock()
-
-
-# Load Images ------------------------------------------------ #
-bg = pygame.image.load(os.path.join('images', 'bg.jpg'))
-icon = pygame.image.load(os.path.join('images', 'icon.png'))
-lvl_one_icon = pygame.image.load(os.path.join('images', 'lvl_one_icon.png'))
-startscreen = pygame.image.load(os.path.join('images', 'startscreen.jpg'))
-
-# Set Icon
-pygame.display.set_icon(icon)
-
-# Variables -------------------------------------------------- #
-bgX = 0
-bgX2 = bg.get_width()
-click = False
-
-# Fonts ------------------------------------------------------ #
-largeFont = pygame.font.SysFont('comicsans', 80)
-smallFont = pygame.font.SysFont('comicsans', 30)
-
-
-# Setup window ----------------------------------------------- # 
-pygame.display.set_caption('Evolution Minigame') # set window name
-WINDOW_SIZE = (500, 500) # set up window size 800,437
-
-win = pygame.display.set_mode(WINDOW_SIZE) # initiate window
-
-def draw_text(text, font, color, surface, x, y):
-    textobj = font.render(text, 1, color)
-    textrect = textobj.get_rect()
-    textrect.topleft = (x, y)
-    surface.blit(textobj, textrect)
-
-def main_menu(click):
-    start = True
-
-    while start:
-        win.blit(startscreen, (0, 0))
-        #draw_text('Evolution', largeFont, (0, 0, 0), win, 270, 200)
-        mx, my = pygame.mouse.get_pos()
-        button = pygame.Rect(300, 300, 200, 100)
-        lvl_one = lvl_one_icon
-        if button.collidepoint((mx, my)):
-            button = pygame.Rect(275, 290, 250, 120)
-            lvl_one = pygame.transform.smoothscale(lvl_one_icon, (250, 120))
-            win.blit(lvl_one, (275, 290))
-            if button.collidepoint((mx, my)):
-                if click:
-                    fade_out(redrawMenu, 500, 500) #800,437
-                    start = False
-                    
-        else:
-            win.blit(lvl_one, (300, 300))
-            
-        click = False
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                start = False
-            if event.type == MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    click = True
-
-            #pygame.display.update()
-
-
-def redrawMenu():
-    lvl_one = lvl_one_icon
-    win.blit(startscreen, (0,0))
-    win.blit(lvl_one, (300, 300))
-
-
-def fade_out(redraw, width, height): 
-    fade = pygame.Surface((width, height))
-    fade.fill((0,0,0))
-    for alpha in range(0, 300):
-        fade.set_alpha(alpha)
-        redraw()
-        win.blit(fade, (0,0))
-        pygame.display.update()
-        pygame.time.delay(3)
-'''
-def endScreen():
-    global pause, byspeed,bxspeed,leben, bx,by, sx, sy,speed
-    pause = 0
-    speed = 30
-    sx = []
-    sy=[]
-    by=[]
-    bx=[]
-
-    win.blit(startscreen, (0,0))
-    pygame.display.update()
-    leben==3
-
-
-
-pygame.time.set_timer(USEREVENT+1, 500)
-pygame.time.set_timer(USEREVENT+2, 3000)
-
-main_menu(click)
-
-'''
-'''
-'''
-
 x=500
 y=500
 sbreite=100
@@ -204,8 +90,7 @@ while leben>0:
             if event.key==pygame.KEYUP:
                     speed=0
             if event.key==pygame.K_RIGHT:
-                speed=2
-    main_menu(click)   
+                speed=2  
     
     screen.fill((255,255,0))
     sbewegung()
