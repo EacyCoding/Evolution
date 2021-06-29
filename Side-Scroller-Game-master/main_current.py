@@ -132,7 +132,7 @@ class Vine(Enemy):
 
     def draw(self, win):
         self.hitbox = (self.x + 10, self.y, self.width, 315)
-        pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
         win.blit(self.img, (self.x, self.y))
 
     def collide(self, rect):
